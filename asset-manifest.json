@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/fireBase-messenger/static/css/main.5132defc.css",
+    "main.js": "/fireBase-messenger/static/js/main.bc2ef291.js",
+    "index.html": "/fireBase-messenger/index.html",
+    "main.5132defc.css.map": "/fireBase-messenger/static/css/main.5132defc.css.map",
+    "main.bc2ef291.js.map": "/fireBase-messenger/static/js/main.bc2ef291.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5132defc.css",
+    "static/js/main.bc2ef291.js"
+  ]
+}
