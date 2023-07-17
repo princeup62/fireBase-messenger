@@ -4,7 +4,7 @@ import { auth, db } from "../firebase";
 import { updateDoc, doc } from "firebase/firestore";
 import { useHistory } from "react-router";
 
-const Login = () => {
+const SignIn = () => {
   const history = useHistory();
   const [data, setData] = useState({
     email: "",
@@ -52,38 +52,46 @@ const Login = () => {
   };
 
   return (
-    <section>
-      <h3>Login into your Account</h3>
-      <form className="form" onSubmit={handleSubmit}>
-        <div className="input_container">
-          <label htmlFor="email">Email</label>
-          <input
-            type="text"
-            name="email"
-            value={email}
-            onChange={handleChange}
-          ></input>
-        </div>
-        <div className="input_container">
-          <label htmlFor="password">Password</label>
-          <input
-            type="text"
-            name="password"
-            value={password}
-            onChange={handleChange}
-          ></input>
-        </div>
+    <div class="loginFormWrapper" onSubmit={handleSubmit}>
+      <div class="box">
+        <form class="box">
+          <h2>Login</h2>
 
-        {error && <p className="error">{error}</p>}
+          <div class="inputBox">
+            <input
+              type="email"
+              required
+              name="email"
+              value={email}
+              onChange={handleChange}
+            />
+            <span>Email</span>
+            <i></i>
+          </div>
 
-        <div className="btn_container">
-          <button type="submit" className="btn" disabled={loading}>
-            {loading ? "Logging in..." : "Login"}
-          </button>
-        </div>
-      </form>
-    </section>
+          <div class="inputBox">
+            <input
+              type="password"
+              required
+              name="password"
+              value={password}
+              onChange={handleChange}
+            />
+            <span>Passsword</span>
+            <i></i>
+          </div>
+
+          {error && <p className="error">{error}</p>}
+
+          <input
+            type="submit"
+            value={loading ? "Loading..." : "Register"}
+            disabled={loading}
+          />
+        </form>
+      </div>
+    </div>
   );
 };
 
-export default Login;
+export default SignIn;

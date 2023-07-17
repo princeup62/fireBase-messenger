@@ -1,10 +1,11 @@
+import "./signup.css";
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../firebase";
 import { setDoc, doc, Timestamp } from "firebase/firestore";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 
-const Register = () => {
+const Signup = () => {
   const history = useHistory();
   const [data, setData] = useState({
     name: "",
@@ -62,47 +63,57 @@ const Register = () => {
   };
 
   return (
-    <section>
-      <h3>Create An Account</h3>
-      <form className="form" onSubmit={handleSubmit}>
-        <div className="input_container">
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={handleChange}
-          ></input>
-        </div>
-        <div className="input_container">
-          <label htmlFor="email">Email</label>
-          <input
-            type="text"
-            name="email"
-            value={email}
-            onChange={handleChange}
-          ></input>
-        </div>
-        <div className="input_container">
-          <label htmlFor="password">Password</label>
-          <input
-            type="text"
-            name="password"
-            value={password}
-            onChange={handleChange}
-          ></input>
-        </div>
+    <div class="loginFormWrapper" onSubmit={handleSubmit}>
+      <div class="box">
+        <form class="box">
+          <h2>Register</h2>
+          <div class="inputBox">
+            <input
+              type="text"
+              required
+              name="name"
+              value={name}
+              onChange={handleChange}
+            />
+            <span>Name</span>
+            <i></i>
+          </div>
 
-        {error && <p className="error">{error}</p>}
+          <div class="inputBox">
+            <input
+              type="email"
+              required
+              name="email"
+              value={email}
+              onChange={handleChange}
+            />
+            <span>Email</span>
+            <i></i>
+          </div>
 
-        <div className="btn_container">
-          <button type="submit" className="btn" disabled={loading}>
-            {loading ? "Creating..." : "Register"}
-          </button>
-        </div>
-      </form>
-    </section>
+          <div class="inputBox">
+            <input
+              type="password"
+              required
+              name="password"
+              value={password}
+              onChange={handleChange}
+            />
+            <span>Passsword</span>
+            <i></i>
+          </div>
+
+          {error && <p className="error">{error}</p>}
+
+          <input
+            type="submit"
+            value={loading ? "Creating..." : "Register"}
+            disabled={loading}
+          />
+        </form>
+      </div>
+    </div>
   );
 };
 
-export default Register;
+export default Signup;
