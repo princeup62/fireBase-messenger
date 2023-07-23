@@ -4,6 +4,7 @@ import { auth, db } from "../firebase";
 import { signOut } from "firebase/auth";
 import { updateDoc, doc } from "firebase/firestore";
 import { AuthContext } from "../context/auth";
+import chatImage from "../assests/chat.png";
 
 const Navbar = () => {
   const { user } = useContext(AuthContext);
@@ -19,8 +20,14 @@ const Navbar = () => {
 
   return (
     <nav>
-      <h3>
-        <Link to="/">Messenger</Link>
+      <h3 style={{ display: "flex", alignItems: "center" }}>
+        <img
+          src={chatImage}
+          alt="chat-app"
+          style={{ width: "50px", height: "50px" }}
+        />
+
+        {/* <Link to="/">Messenger</Link> */}
       </h3>
       <div>
         {user ? (

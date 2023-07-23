@@ -8,7 +8,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
 import SignIn from "./pages/SignIn";
-
+import Home2 from "./pages/Home2";
 function App() {
   return (
     <AuthProvider>
@@ -19,6 +19,7 @@ function App() {
           <Route exact path="/register" component={Signup} />
           <Route exact path="/login" component={SignIn} />
           <PrivateRoute exact path="/" component={Home} />
+          <PrivateRoute exact path="/home2" component={Home2} />
           <PrivateRoute exact path="/profile" component={Profile} />
         </Switch>
       </HashRouter>
