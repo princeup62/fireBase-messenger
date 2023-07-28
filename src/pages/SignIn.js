@@ -85,7 +85,7 @@ const SignIn = () => {
 
           <input
             type="submit"
-            value={loading ? "Loading..." : "Register"}
+            value={loading ? "Loading..." : "Login"}
             disabled={loading}
           />
         </form>

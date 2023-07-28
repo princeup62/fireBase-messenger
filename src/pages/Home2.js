@@ -12,13 +12,14 @@ import {
 } from "firebase/firestore";
 import { useState } from "react";
 import profileIcon from "../assests/profile-icon.png";
+import { useHistory } from "react-router-dom";
+import Camera from "../components/svg/Camera";
 
 const Home2 = () => {
   const [users, setUsers] = useState([]);
   const [chat, setChat] = useState("");
   const [text, setText] = useState("");
   const [msgs, setMsgs] = useState([]);
-
   const user1 = auth.currentUser.uid;
 
   useEffect(() => {
@@ -79,6 +80,18 @@ const Home2 = () => {
     userList.classList.toggle("active");
   }
 
+  function formatDate(date) {
+    const formatDate = new Date(
+      date.seconds * 1000 + date.nanoseconds / 1000000
+    );
+    return formatDate.toLocaleTimeString("en-us", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  }
+
   return (
     <div class="chat-app">
       <div class="sidebar-toggle">
@@ -87,6 +100,7 @@ const Home2 = () => {
           <span></span>
           <span></span>
         </div>
+        <Camera />
       </div>
       <div class="user-list" id="userList">
         {users.map((item) => (
@@ -116,10 +130,13 @@ const Home2 = () => {
               <div
                 key={i}
                 class={`message ${
-                  item.from === user1 ? "message outgoing" : "message incoming"
+                  item.from === user1 ? "outgoing" : "incoming"
                 }`}
               >
                 {item.text}
+                <span className="msg-time-stamp">
+                  {formatDate(item.createdAt)}
+                </span>
               </div>
             );
           })}
@@ -128,17 +145,20 @@ const Home2 = () => {
             <div className="no_conv">Select a user to start Conversation</div>
           )}
         </div>
-        <div class="chat-input">
-          <input
-            type="text"
-            placeholder="Type your message..."
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-          />
-          <button disabled={text ? false : true} onClick={handleSubmit}>
-            Send
-          </button>
-        </div>
+
+        {chat && (
+          <div class="chat-input">
+            <input
+              type="text"
+              placeholder="Type your message..."
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+            />
+            <button disabled={text ? false : true} onClick={handleSubmit}>
+              Send
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

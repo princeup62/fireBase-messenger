@@ -20,14 +20,15 @@ const Navbar = () => {
 
   return (
     <nav>
-      <h3 style={{ display: "flex", alignItems: "center" }}>
+      <h3
+        style={{ display: "flex", alignItems: "center", cursor: "pointer" }}
+        onClick={() => history.push("/")}
+      >
         <img
           src={chatImage}
           alt="chat-app"
           style={{ width: "50px", height: "50px" }}
         />
-
-        {/* <Link to="/">Messenger</Link> */}
       </h3>
       <div>
         {user ? (

@@ -1,10 +1,10 @@
 import React from "react";
 import "./style.scss";
 import { HashRouter, Switch, Route } from "react-router-dom";
-import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import AuthProvider from "./context/auth";
 import PrivateRoute from "./components/PrivateRoute";
+import PublicRoute from "./components/PublicRoute";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
 import SignIn from "./pages/SignIn";
@@ -15,11 +15,9 @@ function App() {
       <HashRouter>
         <Navbar />
         <Switch>
-          {/* <Route exact path="/" component={Home} /> */}
-          <Route exact path="/register" component={Signup} />
-          <Route exact path="/login" component={SignIn} />
+          <PublicRoute exact path="/register" component={Signup} />
+          <PublicRoute exact path="/login" component={SignIn} />
           <PrivateRoute exact path="/" component={Home2} />
-          <PrivateRoute exact path="/home2" component={Home2} />
           <PrivateRoute exact path="/profile" component={Profile} />
         </Switch>
       </HashRouter>
