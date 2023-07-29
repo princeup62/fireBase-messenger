@@ -5,7 +5,6 @@
   padding: 0%;
   box-sizing: border-box;
   font-family: "Poppins", Courier, monospace;
-  // background: #242526;
   color: #ffff;
 }
 
@@ -44,6 +43,7 @@ section {
   margin-top: 100px;
   box-shadow: 1px 2px 10px var(--color-4);
   border-radius: 5px;
+  background: linear-gradient(to right, #9dc6fb 0%, #ffe07d 100%);
 }
 
 section h3 {

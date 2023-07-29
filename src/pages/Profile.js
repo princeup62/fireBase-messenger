@@ -10,6 +10,17 @@ const Profile = () => {
   const [img, setImg] = useState("");
   const [user, setUser] = useState();
 
+  const resetBodyBackgroundColor = () => {
+    document.body.style.backgroundImage = "white";
+  };
+
+  useEffect(() => {
+    document.body.style.backgroundImage =
+      "linear-gradient(to right, rgba(255, 224, 125, 0.5) 0%,rgb(157, 198, 251, 0.5) 100%)";
+
+    return resetBodyBackgroundColor();
+  }, []);
+
   useEffect(() => {
     getDoc(doc(db, "users", auth.currentUser.uid)).then((docSnap) => {
       if (docSnap.exists) {

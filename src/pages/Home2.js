@@ -97,7 +97,7 @@ const Home2 = () => {
           <div className="selected-image-wrapper">
             <div class="chat-profile-image-wrapper">
               <img
-                src={chat.avatar ? chat.avatar.avatar : profileIcon}
+                src={chat.avatar ? chat.avatar : profileIcon}
                 alt="profile"
               />
             </div>
