@@ -12,8 +12,7 @@ import {
 } from "firebase/firestore";
 import { useState } from "react";
 import profileIcon from "../assests/profile-icon.png";
-import { useHistory } from "react-router-dom";
-import Camera from "../components/svg/Camera";
+import Contacts from "../components/svg/Contacts";
 
 const Home2 = () => {
   const [users, setUsers] = useState([]);
@@ -43,8 +42,6 @@ const Home2 = () => {
 
   const selectUser = (user) => {
     setChat(user);
-    console.log("user<><>", user);
-
     const user2 = user.uid;
     const id = user1 > user2 ? `${user1 + user2}` : `${user2 + user1}`;
 
@@ -78,6 +75,7 @@ const Home2 = () => {
   function toggleUserList() {
     const userList = document.getElementById("userList");
     userList.classList.toggle("active");
+    window.scroll(0, 0);
   }
 
   function formatDate(date) {
@@ -95,12 +93,22 @@ const Home2 = () => {
   return (
     <div class="chat-app">
       <div class="sidebar-toggle">
+        {chat && (
+          <div className="selected-image-wrapper">
+            <div class="chat-profile-image-wrapper">
+              <img
+                src={chat.avatar ? chat.avatar.avatar : profileIcon}
+                alt="profile"
+              />
+            </div>
+
+            <text className="selected-profile-name">{chat.name}</text>
+          </div>
+        )}
+
         <div class="menu-icon" onClick={toggleUserList}>
-          <span></span>
-          <span></span>
-          <span></span>
+          <Contacts />
         </div>
-        <Camera />
       </div>
       <div class="user-list" id="userList">
         {users.map((item) => (
