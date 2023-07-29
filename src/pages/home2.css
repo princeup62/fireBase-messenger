@@ -1,6 +1,6 @@
 .chat-app {
   display: flex;
-  min-height: 100vh;
+  min-height: calc(100vh - 70px);
 }
 
 .sidebar-toggle {
@@ -137,7 +137,7 @@
   /* display: flex; */
   align-items: center;
   border-top: 1px solid #eaa750;
-  position: fixed;
+  position: sticky;
   bottom: 0;
   display: inline-block;
   width: 100%;
